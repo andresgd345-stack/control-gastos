@@ -58,3 +58,41 @@ function render() {
 selectFiltro.addEventListener('change', render);
 
 render();
+
+
+form.addEventListener('submit', (e) => {
+    e.preventDefault();  
+    errorDescripcion.textContent = '';
+    errorValor.textContent = '';
+    errorCategoria.textContent = '';
+
+    
+    const descripcion = inputDescripcion.value.trim();
+    const valor = Number(inputValor.value);
+    const categoria = selectCategoria.value;
+
+    let hayErrores = false;
+
+    if (descripcion === '') {
+        errorDescripcion.textContent = 'La descripción es obligatoria';
+        hayErrores = true;
+    }
+
+    if (inputValor.value.trim() === '') {
+        errorValor.textContent = 'El valor es obligatorio';
+        hayErrores = true;
+    } else if (valor <= 0) {
+        errorValor.textContent = 'El valor debe ser mayor que cero';
+        hayErrores = true;
+    }
+
+    if (categoria === '') {
+        errorCategoria.textContent = 'Selecciona una categoría';
+        hayErrores = true;
+    }
+
+    if (hayErrores) return;  
+    gastos.push({ id: Date.now(), descripcion, valor, categoria });
+    form.reset();
+    render();
+});
