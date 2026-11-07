@@ -96,3 +96,12 @@ form.addEventListener('submit', (e) => {
     form.reset();
     render();
 });
+
+
+tbody.addEventListener('click', (e) => {
+    if (!e.target.matches('.btn-eliminar')) return;
+
+    const id = Number(e.target.closest('tr').dataset.id);
+    gastos = gastos.filter((g) => g.id !== id);
+    render();
+});
