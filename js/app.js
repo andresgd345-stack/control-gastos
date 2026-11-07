@@ -12,12 +12,14 @@ const totalEl = document.querySelector('#total');
 
 const PRESUPUESTO = 500000;
 let gastos = [];
+function guardar() {
+    localStorage.setItem('gastos', JSON.stringify(gastos));
+}
 
-// 3. Dibujar todo a partir de los datos
 function render() {
     tbody.replaceChildren();
 
-    // Filtro: solo los gastos de la categoría elegida
+
     const visibles = gastos.filter((g) =>
         selectFiltro.value === 'todas' || g.categoria === selectFiltro.value
     );
