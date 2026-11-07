@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control de gastos personales</title>
+    <link rel="stylesheet" href="css/estilos.css">
+    <script src="js/app.js" defer></script>
+</head>
+<body>
+    <h1>Control de gastos personales</h1>
+
+    <form id="form-gastos">
+        <div class="campo">
+            <label for="descripcion">Descripción:</label>
+            <input type="text" id="descripcion" placeholder="Ej. Almuerzo, pasajes...">
+            <small id="error-descripcion" class="error-texto"></small>
+        </div>
+
+        <div class="campo">
+            <label for="valor">Valor:</label>
+            <input type="number" id="valor" placeholder="Ej. 10000">
+            <small id="error-valor" class="error-texto"></small>
+        </div>
+
+        <div class="campo">
+            <label for="categoria">Categoría:</label>
+            <select id="categoria">
+                <option value="">Selecciona una categoría</option>
+                <option value="Comida">Comida</option>
+                <option value="Transporte">Transporte</option>
+                <option value="Estudio">Estudio</option>
+                <option value="Otros">Otros</option>
+            </select>
+            <small id="error-categoria" class="error-texto"></small>
+        </div>
+
+        <button type="submit">Agregar gasto</button>
+    </form>
+
+       <div class="campo">
+        <label for="filtro">Filtrar por categoría:</label>
+        <select id="filtro">
+            <option value="todas">Todas</option>
+            <option value="Comida">Comida</option>
+            <option value="Transporte">Transporte</option>
+            <option value="Estudio">Estudio</option>
+            <option value="Otros">Otros</option>
+        </select>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Descripción</th>
+                <th>Categoría</th>
+                <th>Valor</th>
+                <th>Acción</th>
+            </tr>
+        </thead>
+        <tbody id="tabla-gastos"></tbody>
+    </table>
+
+    <p id="total">Total: $0</p>
+</body>
+</html>
